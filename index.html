@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Lumin</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="#" />
+    <meta name="keywords" content="Lumin, Skin, Skin Care, Interview" />
+    <meta name="TheOne4All" content="#" />
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/feather.css" />
+    <script type="text/javascript" src="js/graphql_vanilla_js.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </head>
+  <body>
+    <div id="topbar">
+      <span><img class="logo" src="img/logo-dark.png" /></span>
+      <ul class="menu">
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+      <ul class="cart">
+        <li><a href="#">Account</a></li>
+        <li>
+          <a
+            href="#"
+            class="cartBtn"
+            data-toggle="modal"
+            data-target="#cartSlideBar"
+          >
+            <i class="feather icon-shopping-cart"></i>
+            <div class="notice">0</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="header">
+      <div class="header-title">
+        <h2>All Products</h2>
+        <p>A 360° look at Lumin</p>
+      </div>
+      <div class="header-filter">
+        <select class="" name="" placeholder="Filter by">
+          <option value="single-product" disabled="" selected="">
+            Filter by
+          </option>
+          <option value="all-products">All Products</option>
+          <option value="new-products">New Products</option>
+          <option value="sets">Sets</option>
+          <option value="skincare">Skincare</option>
+          <option value="hair-and-body">Hair &amp; Body Care</option>
+          <option value="accessories">Accessories</option>
+          <option value="new-products">New Products</option>
+        </select>
+      </div>
+    </div>
+    <div id="content"></div>
+    <div id="sm">
+      <h2><a>Join the #ManCareMovement</a></h2>
+      <div class="row wrapper">
+        <div class="col-sm-5ths"><img src="img/1.png" /></div>
+        <div class="col-sm-5ths"><img src="img/2.png" /></div>
+        <div class="col-sm-5ths"><img src="img/3.png" /></div>
+        <div class="col-sm-5ths"><img src="img/4.png" /></div>
+        <div class="col-sm-5ths"><img src="img/5.png" /></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="stay-in-touch">
+            <div class="mailing-list-form">
+              <h2>Let’s stay in touch</h2>
+              <p>
+                We’ll give you a heads up on new Lumin products, deals, and
+                events, plus tips &amp; tricks on how to keep your skin looking
+                its damned finest.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="footer-links">
+            <h6>More</h6>
+            <ul>
+              <li><a href="/blogs/lumin">Blog</a></li>
+              <li>
+                <a href="/pages/heroes-program-discount/"
+                  >Lumin Heroes Program</a
+                >
+              </li>
+              <li><a href="/pages/free-trial-faq">Free Trial FAQ</a></li>
+              <li>
+                <a href="/pages/edit-personal-data">Request Personal Data</a>
+              </li>
+              <li>
+                <a href="/pages/privacy-policy">Privacy Policy</a>
+              </li>
+              <li><a href="/pages/affiliate/">Affiliate</a></li>
+              <li>
+                <a href="mailto:wholesale@luminskin.com"
+                  >Lumin Wholesale Inquiry</a
+                >
+              </li>
+              <li><a href="https://angel.co/skinco/">Jobs</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="footer-links">
+            <h6>About</h6>
+            <ul>
+              <li>
+                <a class="lumin-next-link" href="/pages/ingredients"
+                  >Ingredients</a
+                >
+              </li>
+              <li><a href="/pages/customer-reviews">Reviews</a></li>
+              <li>
+                <a class="lumin-next-link" href="/pages/support">Support</a>
+              </li>
+            </ul>
+          </div>
+          <div class="social-links">
+            <a href="http://instagram.com/lumin.skin" target="_blank"
+              ><i class="feather icon-facebook"></i
+            ></a>
+            <a href="https://www.facebook.com/lumin.skincare/" target="_blank"
+              ><i class="feather icon-twitter"></i
+            ></a>
+            <a href="https://twitter.com/lumin_skin" target="_blank"
+              ><i class="feather icon-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal slide-right enable-scroll"
+      id="cartSlideBar"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      role="dialog"
+      style="display: none"
+    >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="container-xs-height full-height">
+              <div class="row-xs-height">
+                <div class="modal-body col-xs-height col-middle">
+                  <!-- Start Cart Product Content -->
+                  <div class="cart-top text-center">
+                    <div class="closeModal">
+                      <i class="feather icon-chevron-right"></i>
+                    </div>
+                    <h5 class="cart-title">YOUR CART</h5>
+                  </div>
+                  <div class="currency-wrapper">
+                    <select
+                      class="currency-select"
+                      onchange="luminDefault(value);"
+                    >
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="CAD">CAD</option>
+                      <option value="AUD">AUD</option>
+                      <option value="GBP">GBP</option>
+                      <option value="JPY">JPY</option>
+                      <option disabled="">---</option>
+                      <option value="AED">AED</option>
+                      <option value="AFN">AFN</option>
+                      <option value="ALL">ALL</option>
+                      <option value="AMD">AMD</option>
+                      <option value="ANG">ANG</option>
+                      <option value="AOA">AOA</option>
+                      <option value="ARS">ARS</option>
+                      <option value="AUD">AUD</option>
+                      <option value="AWG">AWG</option>
+                      <option value="AZN">AZN</option>
+                      <option value="BAM">BAM</option>
+                      <option value="BBD">BBD</option>
+                      <option value="BDT">BDT</option>
+                      <option value="BGN">BGN</option>
+                      <option value="BIF">BIF</option>
+                      <option value="BMD">BMD</option>
+                      <option value="BND">BND</option>
+                      <option value="BOB">BOB</option>
+                      <option value="BRL">BRL</option>
+                      <option value="BSD">BSD</option>
+                      <option value="BWP">BWP</option>
+                      <option value="BZD">BZD</option>
+                      <option value="CAD">CAD</option>
+                      <option value="CDF">CDF</option>
+                      <option value="CHF">CHF</option>
+                      <option value="CLP">CLP</option>
+                      <option value="CNY">CNY</option>
+                      <option value="COP">COP</option>
+                      <option value="CRC">CRC</option>
+                      <option value="CVE">CVE</option>
+                      <option value="CZK">CZK</option>
+                      <option value="DJF">DJF</option>
+                      <option value="DKK">DKK</option>
+                      <option value="DOP">DOP</option>
+                      <option value="DZD">DZD</option>
+                      <option value="EGP">EGP</option>
+                      <option value="ETB">ETB</option>
+                      <option value="EUR">EUR</option>
+                      <option value="FJD">FJD</option>
+                      <option value="FKP">FKP</option>
+                      <option value="GBP">GBP</option>
+                      <option value="GEL">GEL</option>
+                      <option value="GIP">GIP</option>
+                      <option value="GMD">GMD</option>
+                      <option value="GNF">GNF</option>
+                      <option value="GTQ">GTQ</option>
+                      <option value="GYD">GYD</option>
+                      <option value="HKD">HKD</option>
+                      <option value="HNL">HNL</option>
+                      <option value="HRK">HRK</option>
+                      <option value="HTG">HTG</option>
+                      <option value="HUF">HUF</option>
+                      <option value="IDR">IDR</option>
+                      <option value="ILS">ILS</option>
+                      <option value="INR">INR</option>
+                      <option value="ISK">ISK</option>
+                      <option value="JMD">JMD</option>
+                      <option value="JPY">JPY</option>
+                      <option value="KES">KES</option>
+                      <option value="KGS">KGS</option>
+                      <option value="KHR">KHR</option>
+                      <option value="KMF">KMF</option>
+                      <option value="KRW">KRW</option>
+                      <option value="KYD">KYD</option>
+                      <option value="KZT">KZT</option>
+                      <option value="LAK">LAK</option>
+                      <option value="LBP">LBP</option>
+                      <option value="LKR">LKR</option>
+                      <option value="LRD">LRD</option>
+                      <option value="LSL">LSL</option>
+                      <option value="MAD">MAD</option>
+                      <option value="MDL">MDL</option>
+                      <option value="MGA">MGA</option>
+                      <option value="MKD">MKD</option>
+                      <option value="MMK">MMK</option>
+                      <option value="MNT">MNT</option>
+                      <option value="MOP">MOP</option>
+                      <option value="MRO">MRO</option>
+                      <option value="MUR">MUR</option>
+                      <option value="MVR">MVR</option>
+                      <option value="MWK">MWK</option>
+                      <option value="MXN">MXN</option>
+                      <option value="MYR">MYR</option>
+                      <option value="MZN">MZN</option>
+                      <option value="NAD">NAD</option>
+                      <option value="NGN">NGN</option>
+                      <option value="NIO">NIO</option>
+                      <option value="NOK">NOK</option>
+                      <option value="NPR">NPR</option>
+                      <option value="NZD">NZD</option>
+                      <option value="PAB">PAB</option>
+                      <option value="PEN">PEN</option>
+                      <option value="PGK">PGK</option>
+                      <option value="PHP">PHP</option>
+                      <option value="PKR">PKR</option>
+                      <option value="PLN">PLN</option>
+                      <option value="PYG">PYG</option>
+                      <option value="QAR">QAR</option>
+                      <option value="RON">RON</option>
+                      <option value="RSD">RSD</option>
+                      <option value="RUB">RUB</option>
+                      <option value="RWF">RWF</option>
+                      <option value="SAR">SAR</option>
+                      <option value="SBD">SBD</option>
+                      <option value="SCR">SCR</option>
+                      <option value="SEK">SEK</option>
+                      <option value="SGD">SGD</option>
+                      <option value="SHP">SHP</option>
+                      <option value="SLL">SLL</option>
+                      <option value="SOS">SOS</option>
+                      <option value="SRD">SRD</option>
+                      <option value="STD">STD</option>
+                      <option value="SZL">SZL</option>
+                      <option value="THB">THB</option>
+                      <option value="TJS">TJS</option>
+                      <option value="TOP">TOP</option>
+                      <option value="TRY">TRY</option>
+                      <option value="TTD">TTD</option>
+                      <option value="TWD">TWD</option>
+                      <option value="TZS">TZS</option>
+                      <option value="UAH">UAH</option>
+                      <option value="UGX">UGX</option>
+                      <option value="UYU">UYU</option>
+                      <option value="UZS">UZS</option>
+                      <option value="VND">VND</option>
+                      <option value="VUV">VUV</option>
+                      <option value="WST">WST</option>
+                      <option value="XAF">XAF</option>
+                      <option value="XCD">XCD</option>
+                      <option value="XOF">XOF</option>
+                      <option value="XPF">XPF</option>
+                      <option value="YER">YER</option>
+                      <option value="ZAR">ZAR</option>
+                      <option value="ZMW">ZMW</option>
+                    </select>
+                  </div>
+                  <div class="emptyCart">There are no items in your cart.</div>
+                  <div id="list-cart-items"></div>
+                  <!-- End Cart Product Content -->
+                </div>
+                <div class="subtotal row">
+                  <div class="subtotal-title col-sm-6">Subtotal:</div>
+                  <div class="col-sm-6">
+                    <div class="subtotal-amount">
+                      <span>0</span> <b class="currency"></b>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <button class="btn btn-primary">Proceed to Checkout</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
