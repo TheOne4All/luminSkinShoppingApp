@@ -263,6 +263,7 @@ function createSingleCartItemDOM({
 function calcSubTotal() {
   let subtotal = 0;
   let quantityTotal = 0;
+  let itemPriceTotal = 0;
   let price = 0;
   let quantity = 0;
   let listCartItems = document.querySelectorAll("#list-cart-items .card-body");
@@ -273,7 +274,8 @@ function calcSubTotal() {
       quantity = listCartItems[i].querySelector(".quantity .counter")
         .textContent;
       quantityTotal = quantityTotal + parseInt(quantity);
-      subtotal = parseFloat(price, 2) * parseInt(quantity) + subtotal;
+      itemPriceTotal = parseFloat(price, 2) * parseInt(quantity);
+      subtotal = itemPriceTotal + subtotal;
     }
     if (
       (document.querySelector("#topbar .cart .notice").style.display = "none")
