@@ -469,6 +469,9 @@ i {
 .modal .row-xs-height {
   border-radius: 0;
   background-color: #f2f2ef;
+  position: relative;
+  padding-bottom: 140px;
+  min-height: 100vh;
 }
 
 .modal .cart-top {
@@ -540,11 +543,12 @@ i {
 }
 
 .modal .subtotal {
-  position: sticky;
+  position: absolute;
   position: -webkit-sticky;
   bottom: 0;
   margin-left: 0;
   margin-right: 0;
+  height: 140px;
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
