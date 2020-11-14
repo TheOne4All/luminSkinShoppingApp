@@ -540,7 +540,7 @@ i {
 }
 
 .modal .subtotal {
-  position: fixed;
+  position: sticky;
   position: -webkit-sticky;
   bottom: 0;
   margin-left: 0;
