@@ -67,6 +67,7 @@ function luminDefault($i = "USD") {
             " .price-tag"
         ).textContent;
       }
+      calcSubTotal();
     }
 
     toggleCartModal();
