@@ -1,8 +1,18 @@
-// let currencyChange = document.querySelector(".modal .currency-select");
-// currencyChange.addEventListener("change", function () {
-//   // console.log(currencyChange.value);
-//   console.log(currencyChange.value);
-// });
+/**
+ *
+ * JavaScript Library responsible for Managing the Lumin Skin Shopping App Event Dynamics
+ *
+ * @version:       1.0
+ * @package:       Lumin Shopping App
+ * @author:        Ama Eze
+ * @license:       http://opensource.org/licenses/gpl-license.php
+ *                 GNU General Public License (GPL)
+ * @copyright:     Copyright (c) 2020 TheOne4All
+ * @github:         @TheOne4All
+ * @filesource:    js/script.js
+ *
+ **/
+
 function luminDefault($i = "USD") {
   // Create the client, specify the endpoint URL
   client = GraphQL.makeClient("https://pangaea-interviews.now.sh/api/graphql");
@@ -161,6 +171,9 @@ function addToCart() {
       let decrementtBtn = document.querySelector(
         "#list-cart-items ." + itemID + " .quantity .decrement"
       );
+      let closeBtn = document.querySelector(
+        "#list-cart-items ." + itemID + " .list-item-close i"
+      );
       incrementBtn.addEventListener("click", function () {
         createSingleCartItemDOM({
           itemID: itemID,
@@ -171,6 +184,13 @@ function addToCart() {
         createSingleCartItemDOM({
           itemID: itemID,
           action: "minus",
+        });
+        calcSubTotal();
+      });
+      closeBtn.addEventListener("click", function () {
+        createSingleCartItemDOM({
+          itemID: itemID,
+          action: "close",
         });
         calcSubTotal();
       });
@@ -188,7 +208,7 @@ function createSingleCartItemDOM({
   action: action = "add",
 }) {
   // Get List Cart Items container element
-  let listCartItems = document.querySelector("#list-cart-items");
+  let listCartItems = document.getElementById("list-cart-items");
   if (listCartItems.querySelector("." + itemID) !== null) {
     //get the quantity of item selected and increment it
     let itemQuantity = listCartItems.querySelector(
@@ -201,7 +221,11 @@ function createSingleCartItemDOM({
       itemQuantity = parseInt(itemQuantity) - 1;
       if (itemQuantity < 1) {
         listCartItems.removeChild(listCartItems.querySelector("." + itemID));
+        console.log(listCartItems.querySelectorAll(".card-body").length);
       }
+    } else if (action == "close") {
+      itemQuantity = 0;
+      listCartItems.removeChild(listCartItems.querySelector("." + itemID));
     } else {
       alert("Wrong Action Operator!");
     }
@@ -209,6 +233,11 @@ function createSingleCartItemDOM({
       listCartItems.querySelector(
         "." + itemID + " .quantity-selector .counter"
       ).innerHTML = itemQuantity;
+    }
+    // Show style of empty cart if invisible
+    if (listCartItems.querySelectorAll(".card-body").length < 1) {
+      document.querySelector(".modal .emptyCart").style.display = "block";
+      document.querySelector("#topbar .cart .notice").style.display = "none";
     }
   } else {
     let createSingleCartItem = document.createElement("div");
@@ -236,7 +265,7 @@ function calcSubTotal() {
   let price = 0;
   let quantity = 0;
   let listCartItems = document.querySelectorAll("#list-cart-items .card-body");
-  if (listCartItems !== null) {
+  if (listCartItems.length >= 1) {
     for (let i = 0; i < listCartItems.length; i++) {
       price = listCartItems[i].querySelector(".quantity .price span")
         .textContent;
@@ -245,18 +274,17 @@ function calcSubTotal() {
       quantityTotal = quantityTotal + parseInt(quantity);
       subtotal = parseFloat(price, 2) * parseInt(quantity) + subtotal;
     }
+    if (
+      (document.querySelector("#topbar .cart .notice").style.display = "none")
+    ) {
+      document.querySelector("#topbar .cart .notice").style.display = "block";
+    }
   } else {
     subtotal = 0;
   }
   document.querySelector(
     ".subtotal .subtotal-amount span"
   ).innerHTML = parseFloat(subtotal, 2).toLocaleString("en");
-
-  if (
-    (document.querySelector("#topbar .cart .notice").style.display = "none")
-  ) {
-    document.querySelector("#topbar .cart .notice").style.display = "block";
-  }
   document.querySelector("#topbar .cart .notice").innerHTML = quantityTotal;
 }
 
