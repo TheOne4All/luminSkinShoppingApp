@@ -44,7 +44,7 @@ function luminDefault($i = "USD") {
           createSingleProductDOM();
         } else {
           currencyElem[i].innerHTML = currency;
-          priceElem[i].innerHTML = parseFloat(price, 2).toLocaleString("en");
+          priceElem[i].innerHTML = parseFloat(price, 2);
         }
       }
     });
@@ -93,7 +93,7 @@ function createSingleProductDOM() {
     '" class="product-image"></div><h3 class="product-title">' +
     title +
     '</h3><p class="single-product-price">From <span class="price-tag">' +
-    parseFloat(price, 2).toLocaleString() +
+    parseFloat(price, 2) +
     '</span> <b class="currency">' +
     currency +
     '</b></p><button class="btn btn-primary" data-fetch="item_' +
